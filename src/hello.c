@@ -2,4 +2,6 @@
 
 int main() {
 	printf("Hello\n");
+	goto fail;
+fail:
 }
