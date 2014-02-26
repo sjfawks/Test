@@ -1,0 +1,115 @@
+default:
+  parallelLimit: 8
+  rabbitmq:
+    host: localhost
+    port: 5672
+    login: guest
+    password: guest
+    vhost: /
+    queue: stucco
+production:
+  lastupdated : siteupdatehistory.hst
+  sites:
+    - 
+      name: NVD - recent
+      url: http://static.nvd.nist.gov/feeds/xml/cve/nvdcve-2.0-recent.xml
+      frequency: daily
+    -
+      name: CPE
+      url: http://static.nvd.nist.gov/feeds/xml/cpe/dictionary/official-cpe-dictionary_v2.3.xml
+      frequency: daily
+development:
+  sites:
+    -
+      name: stucco
+      url: http://stucco.github.io/
+      frequency: once
+    -
+      name: ontology
+      url: https://raw.github.com/stucco/ontology/master/stucco_schema.json
+      frequency: once
+replayer :
+  collectors:
+    -
+      type: FILE
+      source-name: NVD
+      source-URI: get-exogenous-data/data/nvdcve-2.0-2002.xml
+      content-type : text/xml
+    -
+      type: FILE
+      source-name: NVD
+      source-URI: get-exogenous-data/data/nvdcve-2.0-2003.xml
+      content-type : text/xml
+    -
+      type: FILE
+      source-name: NVD
+      source-URI: get-exogenous-data/data/nvdcve-2.0-2004.xml
+      content-type : text/xml
+    -
+      type: FILE
+      source-name: NVD
+      source-URI: get-exogenous-data/data/nvdcve-2.0-2005.xml
+      content-type : text/xml
+    -
+      type: FILE
+      source-name: NVD
+      source-URI: get-exogenous-data/data/nvdcve-2.0-2006.xml
+      content-type : text/xml
+    -
+      type: FILE
+      source-name: NVD
+      source-URI: get-exogenous-data/data/nvdcve-2.0-2007.xml
+      content-type : text/xml
+    -
+      type: FILE
+      source-name: NVD
+      source-URI: get-exogenous-data/data/nvdcve-2.0-2008.xml
+      content-type : text/xml
+    -
+      type: FILE
+      source-name: NVD
+      source-URI: get-exogenous-data/data/nvdcve-2.0-2009.xml
+      content-type : text/xml
+    -         
+      type: FILE
+      source-name: NVD
+      source-URI: get-exogenous-data/data/nvdcve-2.0-2010.xml
+      content-type : text/xml
+    -
+      type: FILE
+      source-name: NVD
+      source-URI: get-exogenous-data/data/nvdcve-2.0-2011.xml
+      content-type : text/xml
+    -
+      type: FILE
+      source-name: NVD
+      source-URI: get-exogenous-data/data/nvdcve-2.0-2012.xml
+      content-type : text/xml
+    -
+      type: FILE
+      source-name: NVD
+      source-URI: get-exogenous-data/data/nvdcve-2.0-2013.xml
+      content-type : text/xml
+    -
+      type: FILE
+      source-name: maxmind
+      source-URI: get-exogenous-data/data/GeoIPASNum2.csv
+      content-type : text/csv
+    -
+      type: FILE
+      source-name: maxmind
+      source-URI: get-exogenous-data/data/GeoIPCountryWhois.csv
+      content-type : text/csv
+    -
+      type: FILE
+      source-name: CVE
+      source-URI: get-exogenous-data/data/allitems.xml
+      content-type : text/xml
+    -
+      type: FILE
+      source-name: CPE
+      source-URI: get-exogenous-data/data/official-cpe-dictionary_v2.3.xml
+      content-type : text/xml
+  outputLog : ./replayer.log
+  outputDir : ./data/Receive
+  
