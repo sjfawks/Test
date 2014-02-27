@@ -1,4 +1,5 @@
 #include "stdio.h"
+#include "math.h"
 
 int main() {
 	printf("Hello\n");
@@ -7,4 +8,5 @@ int main() {
 	goto fail;
 	goto fail;
 fail:
+	printf("fail\n");
 }
